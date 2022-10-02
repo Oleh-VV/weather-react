@@ -1,38 +1,129 @@
 .App {
   text-align: center;
+  margin: 30px auto;
+  width: 50%;
+  border: 1px solid rgb(215, 213, 213);
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.open-src {
+  margin-left: 25%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.open-src a {
+  text-decoration: none;
+  color: blue;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.open-src a:hover {
+  text-decoration: underline;
+  color: red;
+}
+li {
+  list-style-type: none;
+}
+.middle-block {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.forecast-block {
+  display: flex;
+  justify-content: space-around;
+}
+.forecast-block div {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 15%;
+}
+.forecast-block div p {
+  margin: 7px 0;
+}
+.display {
+  display: flex;
+  flex: 1;
+}
+.main-info {
+  width: 40%;
+}
+.list-info {
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+.display div {
+  text-align: left;
+}
+.image-temp-block {
+  display: flex;
+  margin-top: 10px;
+}
+.image-temp-block p {
+  margin-left: 15px;
+}
+.cities-block {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+h1,
+h3 {
+  margin: 0;
+  text-align: left;
+}
+h1 {
+  color: rgb(96, 92, 92);
+}
+h3 {
+  color: rgb(121, 118, 118);
+}
+form input {
+  padding: 10px 15px;
+  margin-right: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4) inset;
+}
+input[type="submit"] {
   color: white;
+  background-color: rgb(96, 96, 248);
+  border: none;
+  font-weight: 600;
 }
-
-.App-link {
-  color: #61dafb;
+input[type="search"]:focus {
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(22, 4, 102, 0.4);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+input[type="button"] {
+  color: rgb(3, 106, 27);
+  background-color: rgb(171, 250, 162);
+  border: none;
+  font-weight: 600;
+}
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.4);
+}
+.city {
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  color: blue;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.city:hover {
+  background-color: beige;
+  color: black;
+}
+@media screen and (max-width: 1000px) {
+  .App {
+    width: 80%;
   }
-  to {
-    transform: rotate(360deg);
+  .open-src {
+    margin-left: 10%;
   }
 }
