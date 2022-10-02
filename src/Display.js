@@ -1,33 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactAnimatedWeather from "react-animated-weather";
 
 export default function Display(props) {
-  //  function show current date
-  const [curdate, Setcurdate] = useState("Sunday 17:45");
-  function showDate() {
-    let week = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    let date = new Date();
-    let minutes = date.getMinutes();
-    if (minutes < 10) {
-      minutes = `0${minutes}`;
-    }
-    let seconds = date.getSeconds();
-    if (seconds < 10) {
-      seconds = `0${seconds}`;
-    }
-    Setcurdate(
-      `${week[date.getDay()]} ${date.getHours()}:${minutes}:${seconds}`
-    );
-  }
-
+  let curdate = "Sunday 17:45";
+  //  const [curdate, Setcurdate] = useState("Sunday 17:45");
+  //function showDate() {
+  // let week = [ "Sunday","Monday", "Tuesday","Wednesday", "Thursday", "Friday", "Saturday",];
+  //let date = new Date();
+  //let minutes = date.getMinutes();
+  //if (minutes < 10) { minutes = `0${minutes}`; }
+  //let seconds = date.getSeconds();
+  //if (seconds < 10) { seconds = `0${seconds}`; }
+  //Setcurdate(`${week[date.getDay()]} ${date.getHours()}:${minutes}:${seconds}` ); }
   //setInterval(Setcurdate(() => showDate()),1000);
   return (
     <div className="display">
