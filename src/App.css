@@ -119,6 +119,12 @@ input[type="button"]:hover {
   background-color: beige;
   color: black;
 }
+.btntemp {
+  cursor: pointer;
+}
+.blue {
+  color: blue;
+}
 @media screen and (max-width: 1000px) {
   .App {
     width: 80%;

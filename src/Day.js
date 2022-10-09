@@ -8,8 +8,8 @@ export default function Day(props) {
       <ReactAnimatedWeather
         icon={props.icon}
         color={props.color}
-        size="30"
-        animate="true"
+        size={30}
+        animate={true}
       />
       <p>{props.temp} &#176;</p>
     </div>
