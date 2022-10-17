@@ -1,14 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Day from "./Day.js";
+import axios from "axios";
 
-export default function Forecast() {
-  return (
-    <div className="forecast-block">
-      <Day day="Sun" temp="15" color="blue" icon="CLOUDY" />
-      <Day day="Mon" temp="16" color="orange" icon="CLEAR_DAY" />
-      <Day day="Tue" temp="11" color="blue" icon="PARTLY_CLOUDY_DAY" />
-      <Day day="Wed" temp="10" color="blue" icon="CLOUDY" />
-      <Day day="Thu" temp="8" color="black" icon="RAIN" />
-    </div>
-  );
+export default function Forecast(props) {
+  const [loaded, setLoaded] = useState(false);
+  const [forcastData, setForcastData] = useState(null);
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  function getDay(dt) {
+    let date = new Date(dt * 1000);
+    return date.getDay();
+  }
+  useEffect(() => {
+    setLoaded(false);
+  }, [props.lon, props.lat]);
+  function handleResp(response) {
+    setForcastData(response.data.daily);
+    setLoaded(true);
+  }
+  if (loaded) {
+    return (
+      <div className="forecast-block">
+        {days.map((dayName, index) => {
+          if (index < 5) {
+            return (
+              <Day
+                day={days[getDay(forcastData[index].dt)]}
+                tempMin={Math.round(forcastData[index].temp.min)}
+                tempMax={Math.round(forcastData[index].temp.max)}
+                color="blue"
+                icon={forcastData[index].weather[0].icon}
+                key={index}
+              />
+            );
+          }
+        })}
+      </div>
+    );
+  } else {
+    let apiKey = "ae0d6c1e0f247031b20f4e5e8d4b4dc6";
+    let lon = props.lon;
+    let lat = props.lat;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then((response) => handleResp(response));
+    return null;
+  }
 }

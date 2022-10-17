@@ -38,6 +38,12 @@ li {
 .forecast-block div p {
   margin: 7px 0;
 }
+.min-temp {
+  font-weight: 700;
+}
+.max-temp {
+  opacity: 0.6;
+}
 .display {
   display: flex;
   flex: 1;

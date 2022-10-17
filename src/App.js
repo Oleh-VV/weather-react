@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useState } from "react";
 import axios from "axios";
 import Display from "./Display.js";
-import Cities from "./Cities.js";
 import Forecast from "./Forecast.js";
 
 function App() {
@@ -18,6 +17,8 @@ function App() {
     city: "Kyiv",
     data: "",
     iconUrl: "",
+    lon: "",
+    lat: "",
   });
   const [ready, setReady] = useState(false);
   function handleResponse(response) {
@@ -32,6 +33,8 @@ function App() {
         `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       ],
       icon: [response.data.weather[0].icon],
+      lon: [response.data.coord.lon],
+      lat: [response.data.coord.lat],
     });
     setReady(true);
   }
@@ -43,7 +46,6 @@ function App() {
   function handleForm(e) {
     e.preventDefault();
     getWeatherInfo(searchInputValue);
-    //setDisplayItems((previousState) => {return { ...previousState, city: [searchInputValue] };});
   }
   if (ready) {
     return (
@@ -55,13 +57,11 @@ function App() {
             placeholder="Enter the city"
           />
           <input type="submit" value="search" />
-          <input type="button" value="current" />
         </form>
         <div className="middle-block">
           <Display propsObj={displayItems} />
-          <Cities propsObj={displayItems} />
         </div>
-        <Forecast />
+        <Forecast lat={displayItems.lat} lon={displayItems.lon} />
       </div>
     );
   } else {
