@@ -66,7 +66,7 @@ function App() {
     );
   } else {
     getWeatherInfo(displayItems.city);
-    return "Loading ...";
+    return "Loading ....";
   }
 }
 export default App;
